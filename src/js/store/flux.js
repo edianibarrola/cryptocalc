@@ -1,6 +1,10 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
+			positionSize: 0.0,
+			accountSize: 0.0,
+			accountRisk: 0.0,
+			invalidationPoint: 0.0,
 			demo: [
 				{
 					title: "FIRST",
@@ -37,6 +41,26 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 				//reset the global store
 				setStore({ demo: demo });
+			},
+			setPositionSize: x => {
+				console.log(x);
+				setStore({ ["positionSize"]: x });
+				console.log("Position Size set at: " + x);
+			},
+			setAccountSize: x => {
+				console.log(x);
+				setStore({ ["accountSize"]: x });
+				console.log("Account Size set at: " + x);
+			},
+			setAccountRisk: x => {
+				console.log(x);
+				setStore({ ["accountRisk"]: x });
+				console.log("Account Risk Size set at: " + x);
+			},
+			setInvalidationPoint: x => {
+				console.log(x);
+				setStore({ ["invalidationPoint"]: x });
+				console.log("Invalidation point set at: " + x);
 			}
 		}
 	};
