@@ -5,6 +5,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			accountSize: 0.0,
 			accountRisk: 0.0,
 			invalidationPoint: 0.0,
+			profitTarget: 0.0,
 			demo: [
 				{
 					title: "FIRST",
@@ -61,7 +62,31 @@ const getState = ({ getStore, getActions, setStore }) => {
 				console.log(x);
 				setStore({ ["invalidationPoint"]: x });
 				console.log("Invalidation point set at: " + x);
+			},
+			setProfitTarget: x => {
+				console.log(x);
+				setStore({ ["profitTarget"]: x });
+				console.log("Profit Target set at: " + x);
 			}
+			// calculateRatio: x => {
+
+			//     var gcd = function(a, b) {
+			// 		if (b < 0.0000001) return a; // Since there is a limited precision we need to limit the value.
+
+			// 		return gcd(b, Math.floor(a % b)); // Discard any fractions due to limitations in precision.
+			// 	};
+
+			// 	var fraction = x;
+			// 	var len = fraction.toString().length - 2;
+
+			// 	var denominator = Math.pow(10, len);
+			// 	var numerator = fraction * denominator;
+
+			// 	var divisor = gcd(numerator, denominator); // Should be 5
+
+			// 	numerator /= divisor; // Should be 687
+			// 	denominator /= divisor;
+			// }
 		}
 	};
 };
