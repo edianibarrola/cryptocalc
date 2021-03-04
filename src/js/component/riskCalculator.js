@@ -1,6 +1,15 @@
 import React, { useState, useEffect, useContext } from "react";
+import { Button, OverlayTrigger } from "react-bootstrap";
 import { Context } from "../store/appContext";
 import Form from "react-bootstrap/Form";
+import Popover from "react-bootstrap/Popover";
+import {
+	titlePopOver,
+	accountSizePopOver,
+	accountRiskPopOver,
+	profitTargetPopOver,
+	invalidationPointPopOver
+} from "./popOvers";
 
 export const RiskCalculator = () => {
 	const { store, actions } = useContext(Context);
@@ -38,37 +47,42 @@ export const RiskCalculator = () => {
 		console.log(denominator);
 		return numerator, denominator;
 	};
+	// const titlePopOver = (
+	// 	<Popover id="popoverPageTitle">
+	// 		<Popover.Title as="h3">Popover right</Popover.Title>
+	// 		<Popover.Content>
+	// 			{" "}
+	// 			And here some <strong>amazing</strong> conten
+	// 		</Popover.Content>
+	// 	</Popover>
+	// );
 
 	// alert(Math.floor(numerator) + "/" + Math.floor(denominator));
 
 	return (
-		<div className="container">
-			<div className="text-center mt-5">
-				<h1>Crypto Calc</h1>
-				<h3>by EdianSmells</h3>
-				<p>
-					<h3> Account Size </h3>
-					<sub> This is the total amount in your Account</sub>
-					<sub>{"Example: entering 150 would calculate to $150"}</sub>
+		<div className="container d-flex justify-content-center ">
+			<div className="row d-inline-block text-center  mt-5">
+				<div className="col mx-auto">
+					<OverlayTrigger trigger="hover" placement="top" overlay={titlePopOver}>
+						<Button variant="success">
+							<h1>Crypto Calc</h1>
+						</Button>
+					</OverlayTrigger>
+
+					<OverlayTrigger trigger="hover" placement="top" overlay={accountSizePopOver}>
+						<h3>Account Size</h3>
+					</OverlayTrigger>
+
 					<li>
 						<input type="text" name="accountSize" onChange={e => actions.setAccountSize(e.target.value)} />{" "}
-					</li>{" "}
-					<h3> Account Risk in %</h3>
-					<sub>{"New traders want to only trade 1 or 2 percent of their total Account Size"} </sub>
-					<sub> {"this is to keep you from loosing as you learn."} </sub>
-					<sub> {"Example: entering 1 will calculate at 1%"} </sub>
-					<li>
-						<input
-							type="text"
-							name="accountRisk"
-							onChange={e => actions.setAccountRisk(e.target.value)}
-							placeholder={store.accountRisk}
-							value={store.accountRisk}
-						/>{" "}
-					</li>{" "}
+					</li>
+				</div>
+				<div className="col boxStyle">
+					<OverlayTrigger trigger="hover" placement="top" overlay={accountRiskPopOver}>
+						<h3>Account Risk in %</h3>
+					</OverlayTrigger>
 					<Form>
 						<Form.Group controlId="accountRiskRange">
-							<Form.Label>Range</Form.Label>
 							<Form.Control
 								type="range"
 								min="0"
@@ -80,9 +94,20 @@ export const RiskCalculator = () => {
 							/>
 						</Form.Group>
 					</Form>
-					<h3> Profit Target </h3>
-					<sub>{"This is the distance in percent from purchase to your sell-target."}</sub>
-					<sub>{"Example: entering 5 would mean your sell-target is set 5% above purchase."}</sub>
+					<li>
+						<input
+							type="text"
+							name="accountRisk"
+							onChange={e => actions.setAccountRisk(e.target.value)}
+							placeholder={store.accountRisk}
+							value={store.accountRisk}
+						/>{" "}
+					</li>{" "}
+				</div>
+				<div className="col">
+					<OverlayTrigger trigger="hover" placement="top" overlay={profitTargetPopOver}>
+						<h3> Profit Target </h3>
+					</OverlayTrigger>
 					<li>
 						<input
 							type="text"
@@ -106,9 +131,12 @@ export const RiskCalculator = () => {
 							/>
 						</Form.Group>
 					</Form>
-					<h3> Invalidation Point </h3>
-					<sub>{"This is the distance in percent from purchase to your stop-loss."}</sub>
-					<sub>{"Example: entering 5 would mean your stop loss is set 5% below purchase."}</sub>
+				</div>
+				<div className="col">
+					<OverlayTrigger trigger="hover" placement="top" overlay={invalidationPointPopOver}>
+						<h3> Invalidation Point </h3>
+					</OverlayTrigger>
+
 					<li>
 						<input
 							type="text"
@@ -132,10 +160,12 @@ export const RiskCalculator = () => {
 							/>
 						</Form.Group>
 					</Form>
-				</p>
-				<li>Position Size = {store.accountSize * (store.accountRisk / 100)} </li>
-				{/* <button onClick={() => getFraction()}> ratio calculate </button> */}
-				<li>Risk to Reward Ratio ={store.invalidationPoint / store.profitTarget} </li>
+				</div>
+				<div className="col">
+					<li>Position Size = {store.accountSize * (store.accountRisk / 100)} </li>
+					{/* <button onClick={() => getFraction()}> ratio calculate </button> */}
+					<li>Risk to Reward Ratio ={store.invalidationPoint / store.profitTarget} </li>
+				</div>
 			</div>
 		</div>
 	);
