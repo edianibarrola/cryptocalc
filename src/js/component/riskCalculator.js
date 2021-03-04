@@ -62,13 +62,14 @@ export const RiskCalculator = () => {
 	return (
 		<div className="container d-flex justify-content-center ">
 			<div className="row d-inline-block text-center  mt-5">
-				<div className="col mx-auto">
+				<div className="col boxStyle ">
 					<OverlayTrigger trigger="hover" placement="top" overlay={titlePopOver}>
 						<Button variant="success">
 							<h1>Crypto Calc</h1>
 						</Button>
 					</OverlayTrigger>
-
+				</div>
+				<div className="col boxStyle">
 					<OverlayTrigger trigger="hover" placement="top" overlay={accountSizePopOver}>
 						<h3>Account Size</h3>
 					</OverlayTrigger>
@@ -104,7 +105,7 @@ export const RiskCalculator = () => {
 						/>{" "}
 					</li>{" "}
 				</div>
-				<div className="col">
+				<div className="col boxStyle">
 					<OverlayTrigger trigger="hover" placement="top" overlay={profitTargetPopOver}>
 						<h3> Profit Target </h3>
 					</OverlayTrigger>
@@ -119,7 +120,6 @@ export const RiskCalculator = () => {
 					</li>
 					<Form>
 						<Form.Group controlId="profitTargetRange">
-							<Form.Label>Range</Form.Label>
 							<Form.Control
 								type="range"
 								min="0"
@@ -132,7 +132,7 @@ export const RiskCalculator = () => {
 						</Form.Group>
 					</Form>
 				</div>
-				<div className="col">
+				<div className="col boxStyle">
 					<OverlayTrigger trigger="hover" placement="top" overlay={invalidationPointPopOver}>
 						<h3> Invalidation Point </h3>
 					</OverlayTrigger>
@@ -148,7 +148,6 @@ export const RiskCalculator = () => {
 					</li>
 					<Form>
 						<Form.Group controlId="invalidationPointRange">
-							<Form.Label>Range</Form.Label>
 							<Form.Control
 								type="range"
 								min="0"
@@ -161,7 +160,7 @@ export const RiskCalculator = () => {
 						</Form.Group>
 					</Form>
 				</div>
-				<div className="col">
+				<div className="col boxStyle">
 					<li>Position Size = {store.accountSize * (store.accountRisk / 100)} </li>
 					{/* <button onClick={() => getFraction()}> ratio calculate </button> */}
 					<li>Risk to Reward Ratio ={store.invalidationPoint / store.profitTarget} </li>
