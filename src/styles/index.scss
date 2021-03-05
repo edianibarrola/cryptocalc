@@ -1,8 +1,23 @@
 /* 
     General Styles
 */
+body{
+    background: black;
+}
 .boxStyle {
-    border: 1px solid black;
+    border-radius: 10px;
+    background: rgb(97, 97, 97);
     padding: 5%;
     margin: 5%;
+    box-shadow:
+    0 4px 8px -2px hsl(187, 100%, 49%),
+    0 4px 8px -4px hsl(197, 100%, 49%),
+    0 4px 6px -3px hsl(209, 100%, 49%),
+    0 4px 10px 2px hsl(229, 100%, 49%);
+    
+    border: solid 1px hsl(0, 0%, 53%);
+    
+    
+ 
+ 
 }
