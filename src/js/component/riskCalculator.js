@@ -107,7 +107,7 @@ export const RiskCalculator = () => {
 				</div>
 				<div className="col boxStyle">
 					<OverlayTrigger trigger="hover" placement="top" overlay={profitTargetPopOver}>
-						<h3> Profit Target </h3>
+						<h3> Profit Target Price</h3>
 					</OverlayTrigger>
 					<li>
 						<input
@@ -124,7 +124,7 @@ export const RiskCalculator = () => {
 								type="range"
 								min="0"
 								max="100"
-								step="0.5"
+								step="0.1"
 								onChange={e => actions.setProfitTarget(e.target.value)}
 								placeholder={store.profitTarget}
 								value={store.profitTarget}
@@ -134,7 +134,7 @@ export const RiskCalculator = () => {
 				</div>
 				<div className="col boxStyle">
 					<OverlayTrigger trigger="hover" placement="top" overlay={invalidationPointPopOver}>
-						<h3> Invalidation Point </h3>
+						<h3> Invalidation Point Price</h3>
 					</OverlayTrigger>
 
 					<li>
@@ -152,7 +152,7 @@ export const RiskCalculator = () => {
 								type="range"
 								min="0"
 								max="100"
-								step="0.5"
+								step="0.1"
 								onChange={e => actions.setInvalidationPoint(e.target.value)}
 								placeholder={store.invalidationPoint}
 								value={store.invalidationPoint}
@@ -161,9 +161,11 @@ export const RiskCalculator = () => {
 					</Form>
 				</div>
 				<div className="col boxStyle">
-					<li>Position Size = {store.accountSize * (store.accountRisk / 100)} </li>
-					{/* <button onClick={() => getFraction()}> ratio calculate </button> */}
-					<li>Risk to Reward Ratio ={store.invalidationPoint / store.profitTarget} </li>
+					<h3>
+						position size =
+						{(store.accountSize * (store.accountRisk / 100)) /
+							(store.profitTarget - store.invalidationPoint)}
+					</h3>
 				</div>
 			</div>
 		</div>

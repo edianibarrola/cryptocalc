@@ -2,7 +2,8 @@
     General Styles
 */
 body{
-    background: black;
+    background: #001c2e;
+    background-image: url("../img/gun-metal.png");
 }
 .boxStyle {
     border-radius: 10px;
@@ -16,8 +17,8 @@ body{
     0 4px 10px 2px hsl(229, 100%, 49%);
     
     border: solid 1px hsl(0, 0%, 53%);
-    
-    
- 
- 
+     
+}
+li {
+    list-style: none;
 }

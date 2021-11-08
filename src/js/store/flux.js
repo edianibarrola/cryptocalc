@@ -6,6 +6,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			accountRisk: 0.0,
 			invalidationPoint: 0.0,
 			profitTarget: 0.0,
+			riskRatio: 0.0,
 			demo: [
 				{
 					title: "FIRST",
@@ -67,6 +68,14 @@ const getState = ({ getStore, getActions, setStore }) => {
 				console.log(x);
 				setStore({ ["profitTarget"]: x });
 				console.log("Profit Target set at: " + x);
+			},
+			setRiskRatio: () => {
+				const store = getStore();
+				let inv = store.invalidationPoint;
+				let prof = store.profitTarget;
+				let riskRatio = "{:.0%}".format(inv / prof);
+				setStore({ ["riskRatio"]: riskRatio });
+				console.log("Risk Ratio set at: " + x);
 			}
 			// calculateRatio: x => {
 
